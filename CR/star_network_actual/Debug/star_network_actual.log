@@ -1,0 +1,16 @@
+﻿  star_actual.c
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(8): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(9): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(12): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(47): warning C4101: “N”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(47): warning C4101: “j”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(47): warning C4101: “i”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(71): warning C4244: “函数”: 从“float”转换到“size_t”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(112): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(223): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(256): warning C4101: “pro”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(255): warning C4101: “i”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(290): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(292): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\star_network_actual\star_actual.c(283): warning C4101: “i”: 未引用的局部变量
+  star_network_actual.vcxproj -> D:\研一上\王老师相关\SIS\复现—Critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\C语言复现\CR\Debug\star_network_actual.exe

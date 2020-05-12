@@ -1,0 +1,13 @@
+﻿  ER.c
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(28): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(29): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(32): warning C4305: “初始化”: 从“double”到“float”截断
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(82): warning C4244: “函数”: 从“float”转换到“size_t”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(127): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(189): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(233): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(312): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(370): warning C4101: “i”: 未引用的局部变量
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(407): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\project1\er.c(409): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  Project1.vcxproj -> D:\研一上\王老师相关\SIS\复现—Critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\C语言复现\CR\Debug\ER_network.exe

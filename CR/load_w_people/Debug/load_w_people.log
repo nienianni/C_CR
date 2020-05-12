@@ -1,0 +1,4 @@
+﻿  load_w.c
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\load_w_people\load_w.c(18): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+d:\研一上\王老师相关\sis\复现—critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\c语言复现\cr\load_w_people\load_w.c(23): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+  load_w_people.vcxproj -> D:\研一上\王老师相关\SIS\复现—Critical regimes driven by recurrent mobility patterns of reaction–diffusion processes in networks\C语言复现\CR\Debug\load_w_people.exe
