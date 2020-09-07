@@ -127,15 +127,16 @@
     <ClCompile Include="cr_ER.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="I_L_pd_3_2.txt" />
     <Text Include="I_L_pd_sus.txt" />
     <Text Include="I_L_la.txt" />
     <Text Include="I_L_pd.txt" />
     <Text Include="I_L_la_sus.txt" />
+    <Text Include="I_pd_L_3_2.txt" />
     <Text Include="w_a.txt" />
     <Text Include="help1.txt" />
     <Text Include="help2.txt" />
     <Text Include="peoplenum.txt" />
-    <Text Include="result1.txt" />
     <Text Include="check_tmax.txt" />
     <Text Include="I_L_pd_3.txt" />
     <Text Include="w.txt" />

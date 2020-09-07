@@ -20,9 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="result1.txt">
-      <Filter>资源文件</Filter>
-    </Text>
     <Text Include="I_L_pd.txt">
       <Filter>资源文件</Filter>
     </Text>
@@ -54,6 +51,12 @@
       <Filter>资源文件</Filter>
     </Text>
     <Text Include="help2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_L_pd_3_2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_pd_L_3_2.txt">
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>

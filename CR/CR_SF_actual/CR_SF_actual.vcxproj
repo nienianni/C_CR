@@ -126,17 +126,18 @@
     <ClCompile Include="CR_SF_actual.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="I_la_L_a.txt" />
+    <Text Include="help1.txt" />
+    <Text Include="I_L_pd_a_3_2.txt" />
     <Text Include="I_L_pd_a.txt" />
     <Text Include="I_L_la_a.txt" />
-    <Text Include="I_la_pd_a.txt" />
-    <Text Include="people1.txt" />
-    <Text Include="people2.txt" />
+    <Text Include="help2.txt" />
+    <Text Include="I_L_pd_a_3.txt" />
+    <Text Include="I_pd_L_a_3_2.txt" />
+    <Text Include="M_a_3.txt" />
+    <Text Include="M_a_la.txt" />
+    <Text Include="M_a_pd.txt" />
     <Text Include="people3.txt" />
     <Text Include="peoplenum_a.txt" />
-    <Text Include="result1_a.txt" />
-    <Text Include="result2_a.txt" />
-    <Text Include="result3_a.txt" />
     <Text Include="w_a.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -20,22 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="people1.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="people2.txt">
-      <Filter>资源文件</Filter>
-    </Text>
     <Text Include="people3.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="result1_a.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="result2_a.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="result3_a.txt">
       <Filter>资源文件</Filter>
     </Text>
     <Text Include="I_L_pd_a.txt">
@@ -44,16 +29,34 @@
     <Text Include="I_L_la_a.txt">
       <Filter>资源文件</Filter>
     </Text>
-    <Text Include="I_la_pd_a.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="I_la_L_a.txt">
-      <Filter>资源文件</Filter>
-    </Text>
     <Text Include="peoplenum_a.txt">
       <Filter>资源文件</Filter>
     </Text>
     <Text Include="w_a.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="help1.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="help2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="M_a_la.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="M_a_pd.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_L_pd_a_3.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_L_pd_a_3_2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_pd_L_a_3_2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="M_a_3.txt">
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>

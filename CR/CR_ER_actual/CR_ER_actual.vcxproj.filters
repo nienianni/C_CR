@@ -53,5 +53,11 @@
     <Text Include="M_a_la.txt">
       <Filter>资源文件</Filter>
     </Text>
+    <Text Include="I_L_pd_a_3_2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="I_pd_L_a_3_2.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

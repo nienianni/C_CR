@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<math.h>
 #include<time.h>
-#define pi 3.1415926
+//#define pi 3.1415926
 
 int NETWORK_SIZE;
 double PROBABILITY_OF_EAGE;
@@ -26,7 +26,6 @@ double *I_pro_ini;
 double *I_pro;
 double *I_pro_t;
 double *sum_w;
-int ** peopleTodes_num;//记录每个城市到每个城市的人数（包括待在家）
 double *P;//记录扩散发生后，S态个体在每个种群中会被感染的概率
 
 
@@ -39,8 +38,8 @@ double pd;//出门的概率
 double lambda ;
 double mu=0.2;
 double la;
-int tmax = 2000;//总次数
-int t_test = 1000;//实验次数
+int tmax = 1000;//总次数
+int t_test = 500;//实验次数
 
 void load_city_people_num();
 void initial();//初始化数组
@@ -102,8 +101,8 @@ void load_city_people_num()
 }
 void initial()
 {
-	adjacentMatrix_w = (int**)malloc(sizeof(int *) * NETWORK_SIZE); //分配指针数组
 	int i;
+	adjacentMatrix_w = (int**)malloc(sizeof(int *) * NETWORK_SIZE); //分配指针数组
 	for (i = 0; i < NETWORK_SIZE; i++)
 	{
 		adjacentMatrix_w[i] = (int *)malloc(sizeof(int) * NETWORK_SIZE);//分配每个指针指向的数组
@@ -124,12 +123,6 @@ void initial()
 	I_pro_ini = (double *)malloc(sizeof(double)*NETWORK_SIZE );
 	I_pro = (double *)malloc(sizeof(double)*NETWORK_SIZE );
 	I_pro_t = (double *)malloc(sizeof(double)*t_test);
-
-	peopleTodes_num = (int**)malloc(sizeof(int *) * NETWORK_SIZE ); //分配指针数组
-	for (i = 0; i < NETWORK_SIZE ; i++)
-	{
-		peopleTodes_num[i] = (int *)malloc(sizeof(int) * NETWORK_SIZE );//分配每个指针指向的数组
-	}
 	P = (double *)malloc(sizeof(double)*NETWORK_SIZE );
 }
 void load_struct_people()
@@ -140,7 +133,7 @@ void load_struct_people()
 		for (j = 0; j <city_people_num[i]; j++)
 		{
 			city[i][j].sta = i;
-			if (j< (int)(city_people_num[i] * 0.01 + 0.5))
+			if ( i==0 && j <10)
 			{
 				city[i][j].ini_state = 'I';
 			}
@@ -252,6 +245,16 @@ void load_Matrix_w()
 		}
 	}
 	fclose(fp2);
+	/*for (i = 0; i < NETWORK_SIZE; i++)
+	{
+		for (j = 0; j < NETWORK_SIZE; j++)
+		{
+			if (adjacentMatrix_w[i][j] != 0)
+			{
+				adjacentMatrix_w[i][j] = 10;
+			}
+		}
+	}*/
 }
 double load_randnum()
 {
@@ -267,14 +270,43 @@ void load_Matrix_R_fenzi()
 	{
 		for (j = 0; j < NETWORK_SIZE; j++)
 		{
-			if (adjacentMatrix_w[i][j] == 0 || I_pro[j] ==0)
+			if (adjacentMatrix_w[i][j] == 0)
 			{
 				adjacentMatrix_R[i][j] = 0;
 			}
 			else
 			{
-				adjacentMatrix_R[i][j] =pow(adjacentMatrix_w[i][j] * I_pro[j], la);
+				adjacentMatrix_R[i][j] = pow(adjacentMatrix_w[i][j] * (I_pro[j] + 0.00000000000000000001), la);
 			}
+			/*if (adjacentMatrix_w[i][j] == 0 || I_pro[j] ==0)
+			{
+				adjacentMatrix_R[i][j] = 0.00001;
+			}
+			else
+			{
+				adjacentMatrix_R[i][j] =pow(adjacentMatrix_w[i][j] * I_pro[j] + 0.00001, la);
+			}*/
+		}
+	}
+}
+void load_Matrix_R()
+{
+	int i, j;
+	double s;
+	for (i = 0; i < NETWORK_SIZE; i++)
+	{
+		s = 0;
+		for (j = 0; j < NETWORK_SIZE; j++)
+		{
+			s = adjacentMatrix_R[i][j] + s;
+		}
+		sum_w[i] = s;
+	}
+	for (i = 0; i < NETWORK_SIZE; i++)
+	{
+		for (j = 0; j < NETWORK_SIZE; j++)
+		{
+			adjacentMatrix_R[i][j] = adjacentMatrix_R[i][j] / sum_w[i];
 		}
 	}
 }
@@ -307,11 +339,14 @@ void load_people_des()
 		for (j = 0; j < city_people_num[i]; j++)
 		{
 			r_pd = load_randnum();
+			//printf("pd:%f  r_pd:%f\n", pd, r_pd);
 			if (r_pd < pd)//要出去
 			{
 				double r_where;
 				r_where = (adjacentMatrix_R[city[i][j].sta][wSum_loc[city[i][j].sta]])* (rand() / (RAND_MAX + 0.0));
-				//printf("r_where=%f\n", r_where);
+				/*printf("r=%f\n", adjacentMatrix_R[city[i][j].sta][wSum_loc[city[i][j].sta]]);
+				printf("r_where=%f\n", r_where);
+				printf("\n");*/
 				for (m = 0; m < NETWORK_SIZE ; m++)
 				{
 					if (adjacentMatrix_R[city[i][j].sta][m] >= r_where)
@@ -380,7 +415,7 @@ void load_people_fin_state()
 					{
 						A = 2;
 						city[i][j].fin_state = 'I';
-						//break;
+						break;
 					}
 				}
 				if (A == 0)
@@ -421,10 +456,6 @@ void load_I_pro(int t)
 				}
 			}
 			I_pro[m] = ((double)I / (I + S));
-			if (I_pro[m] == 0)
-			{
-				printf("%d:lalala\n ",m);
-			}
 		}
 	}
 }
@@ -436,22 +467,22 @@ void load_I_pro_t(int t)
 	{
 		sum = sum + I_pro[i];
 	}
-	I_pro_t[t-(tmax-t_test)] =sum / (double)NETWORK_SIZE;
+	I_pro_t[t-(tmax-t_test)] = (double)sum / NETWORK_SIZE;
 }
 void load_I_pro_limit()
 {
 	int i,j,t;
 	for (t = 0; t < tmax; t++)
 	{
-		//printf("la:%f pd:%f t:%d \n", la, pd, t);
+		//printf("la:%f pd:%f t:%d lambda:%f \n", la, pd, t,lambda);
 		load_I_pro(t);
-		printf("rho:\n");
+	   /* printf("rho:\n");
 		for (i = 0; i < NETWORK_SIZE; i++)
 		{
 			printf("%f ", I_pro[i]);
 		}
 		printf("\n");
-		printf("\n");
+		printf("\n");*/
 		if (t >= (tmax-t_test))
 		{
 			load_I_pro_t(t);
@@ -468,14 +499,16 @@ void load_I_pro_limit()
 		{
 			for (i = 0; i < NETWORK_SIZE; i++)
 			{
-				printf("%f ", adjacentMatrix_w[j][i]);
+				printf("%d ", adjacentMatrix_w[j][i]);
 			}
 			printf("\n");
 		}
 		printf("\n");*/
 		load_Matrix_R_fenzi();
+		load_Matrix_R();
+
 		/*printf("R:\n");
-		for (j = 0; j < NETWORK_SIZE; j++)
+		  for (j = 0; j < NETWORK_SIZE; j++)
 		{
 			for (i = 0; i < NETWORK_SIZE; i++)
 			{
@@ -494,15 +527,16 @@ void load_I_pro_limit()
 			}
 			printf("\n");
 		}
-		printf("\n");
-		*/
+		printf("\n");*/
+		
 		load_people_des();
 		/*for (j = 0; j < NETWORK_SIZE; j++)
 		{
-			for (i = 0; i < NETWORK_SIZE; i++)
+			for (i = 0; i <city_people_num[j]; i++)
 			{
 				printf("%d ", city[j][i].des);
 			}
+			printf("\n");
 			printf("\n");
 		}*/
 		load_people_current_state(t);
@@ -523,18 +557,15 @@ double load_I_pro_zong()//求t_test次平均结果
 {
 	int i;
 	double pro_zong, zong=0;
-	printf("I_pro_t:\n");
-	for (i = 0; i < t_test; i++)
+	/*for (i = 0; i < t_test; i++)
 	{
-		printf("%d:%f \n", i,I_pro_t[i]);
-	}
-	printf("\n");
-	printf("\n");
+		printf("%d:%f\n", i, I_pro_t[i]);
+	}*/
 	for (i = 0; i < t_test ; i++)
 	{
 		zong = I_pro_t[i] + zong;
 	}
-	pro_zong = zong/(double)t_test;
+	pro_zong = (double)zong/t_test;
 	return pro_zong;
 }
 double load_I_sus()
@@ -568,32 +599,32 @@ double load_I_sus()
 	return S;
 	
 }
-void load_write_file()
+/*void load_write_file()
 {
 	int i,j;
 	double pro;
 	double S;
 	errno_t err1;
-	err1 = fopen_s(&fp4, "help2.txt", "w");
+	err1 = fopen_s(&fp4, "help1.txt", "w");
 	//errno_t err2;
-	//err2 = fopen_s(&fp5, "help2.txt", "w");
+	//err2 = fopen_s(&fp5, "help1.txt", "w");
 	if (err1 != 0)
 	{
 		puts("不能打开文件");
 	}
-	/*if (err2 != 0)
+	//if (err2 != 0)
+	//{
+		//puts("不能打开文件sus");
+	//}
+	for (pd = 0.3; pd <= 0.8; pd = pd + 0.2)//3
 	{
-		puts("不能打开文件sus");
-	}*/
-	for (la = -2; la <= -2; la = la + 2)//3
-	{
-		fprintf_s(fp4, "la=%f\n", la);
+		fprintf_s(fp4, "pd=%f\n", pd);
 		//fprintf_s(fp5, "la=%f\n", la);
-		for (pd = 1; pd <= 1; pd = pd + 0.02)
+		for (la = -6; la <= 6; la = la + 3)
 		{
 			//fprintf_s(fp4, "pd=%f\n", pd);
 			//fprintf_s(fp5, "pd=%f\n", pd);
-			for (lambda = 0.001; lambda <= 0.001; lambda = lambda + 0.0002)//50
+			for (lambda = 0.01; lambda <= 0.0101; lambda = lambda + 0.0002)//50
 			{
 				load_I_pro_limit();
 				pro = load_I_pro_zong();
@@ -607,13 +638,62 @@ void load_write_file()
 		fprintf_s(fp4, "\n");
 		fprintf_s(fp4, "\n");
 		fprintf_s(fp4, "\n");
-		/*fprintf_s(fp5, "\n");
-		fprintf_s(fp5, "\n");
-		fprintf_s(fp5, "\n");*/
+	   // fprintf_s(fp5, "\n");
+		//fprintf_s(fp5, "\n");
+		//fprintf_s(fp5, "\n");
     }
 	fclose(fp4);
 	//fclose(fp5);
+}*/
+void load_write_file()
+{
+	int i, j;
+	double pro;
+	double S;
+	errno_t err1;
+	err1 = fopen_s(&fp4, "help1.txt", "w");
+	//errno_t err2;
+	//err2 = fopen_s(&fp5, "I_L_pd_sus.txt", "w");
+	if (err1 != 0)
+	{
+		puts("不能打开文件");
+	}
+	//if (err2 != 0)
+	//{
+	//	puts("不能打开文件sus");
+	//}
+	for (pd = 0.3; pd <= 0.3; pd = pd + 0.2)//3
+	{
+		fprintf_s(fp4, "pd=%f\n", pd);
+		//fprintf_s(fp5, "la=%f\n", la);
+		for (la = -6; la <= 6; la = la + 3)
+		{
+			//fprintf_s(fp4, "pd=%f\n", pd);
+			//fprintf_s(fp5, "pd=%f\n", pd);
+			for (lambda = 0.0098; lambda <= 0.0101; lambda = lambda + 0.0002)//50
+			{
+				load_I_pro_limit();
+				pro = load_I_pro_zong();
+				fprintf_s(fp4, "%f ", pro);
+				//S = load_I_sus();
+				//fprintf_s(fp5, "%f ", S);
+			}
+			fprintf_s(fp4, "\n");
+			//fprintf_s(fp5, "\n");
+		}
+		fprintf_s(fp4, "\n");
+		fprintf_s(fp4, "\n");
+		fprintf_s(fp4, "\n");
+		//fprintf_s(fp5, "\n");
+		//fprintf_s(fp5, "\n");
+		//fprintf_s(fp5, "\n");
+	}
+	fclose(fp4);
+	//fclose(fp5);
 }
+
+
+
 /*
 void load_city_people_num()
 {
